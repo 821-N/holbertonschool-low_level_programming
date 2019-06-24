@@ -7,16 +7,15 @@
 int main(void)
 {
 	int i;
-	long a = 1, b = 2, c;
+	long a = 1, b = 2;
 
 	for (i = 0; i < 50; i++)
 	{
 		if (i)
 			printf(", ");
 		printf("%ld", a);
-		c = b;
 		b += a;
-		a = c;
+		a = b - a;
 	}
 	putchar('\n');
 
