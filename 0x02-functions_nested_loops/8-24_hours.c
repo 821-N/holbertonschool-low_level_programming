@@ -3,7 +3,7 @@
 /**
  * print_2_digits - print 2 digit number
  *
- * @n - number to print
+ * @n: number to print
  */
 void print_2_digits(char n)
 {
