@@ -16,7 +16,7 @@ void print(char *message)
  */
 int main(void)
 {
-	print("holberton\n");
+	print("Holberton\n");
 	return (0);
 }
 
