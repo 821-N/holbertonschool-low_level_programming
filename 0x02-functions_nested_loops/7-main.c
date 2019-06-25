@@ -11,6 +11,8 @@ int main(void)
 
     print_last_digit(98);
     print_last_digit(0);
+	print_last_digit(-14);
+	print_last_digit(100);
     r = print_last_digit(-1024);
     _putchar('0' + r);
     _putchar('\n');
