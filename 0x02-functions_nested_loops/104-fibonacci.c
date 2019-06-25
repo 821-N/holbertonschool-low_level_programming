@@ -10,7 +10,7 @@
 void print_dec11(double low, double high)
 {
 	if (high)
-		printf("%.0f%0.0f", high, low);
+		printf("%.0f%011.0f", high, low);
 	else
 		printf("%.0f", low);
 }
