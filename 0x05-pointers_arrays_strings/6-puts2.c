@@ -2,7 +2,9 @@
 
 /**
  * puts2 - prints every other character
- *  starting at 0
+ *  in @str starting at 0
+ *
+ * @str: string
  */
 void puts2(char *str)
 {
