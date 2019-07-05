@@ -8,7 +8,10 @@ char *cap_string(char *in)
 {
 	char c, *s;
 
-	for (s = in; *s; s++)
+	if (*in >= 'a' && *in <= 'z')
+		*in -= 'a' - 'A';
+
+	for (s = in + 1; *s; s++)
 		if (*s >= 'a' && *s <= 'z')
 		{
 			c = s[-1];
@@ -16,7 +19,7 @@ char *cap_string(char *in)
 					c == ',' || c == ';' || c == '.' ||
 					c == '!' || c == '?' || c == '(' ||
 					c == ')' || c == '{' || c == '}')
-				*s = *s - ('a' - 'A');
+				*s -= 'a' - 'A';
 		}
 
 	return (in);
