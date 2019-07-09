@@ -1,22 +1,18 @@
 #include <stdlib.h>
 
 /**
- * _strcmp - Compares strings
+ * checkmatch - check if @small matches at @big
  *
- * @s1: string 2
- * @s2: string 1
- * Return: @s1<@s2: -1, @s1==@s2: 0, @s1>@s2: 1
+ * @small: string to check for
+ * @big: location to check at
+ * Return: if match
  */
-int _strcmp(char *s1, char *s2)
+int checkmatch(char *big, char *small)
 {
-	do {
-		if (*s1 < *s2)
-			return (-1);
-		else if (*s1 > *s2)
-			return (1);
-		s2++;
-	} while (*s1++);
-	return (0);
+	for (; *small; small++)
+		if (*big++ != *small)
+			return (0);
+	return (1);
 }
 
 /**
@@ -29,7 +25,7 @@ int _strcmp(char *s1, char *s2)
 char *_strstr(char *haystack, char *needle)
 {
 	for (; *haystack; haystack++)
-		if (!_strcmp(haystack, needle))
+		if (checkmatch(haystack, needle))
 			return (haystack);
 	return (NULL);
 }
