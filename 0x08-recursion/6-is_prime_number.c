@@ -1,5 +1,5 @@
 /**
- * is_prime_sub - prime test
+ * is_prime_sub - prime test. Doesn't work on 1, 0, or -1
  *
  * @n: number to check
  * @div: divisor
@@ -23,7 +23,9 @@ int is_prime_sub(int n, int div)
  */
 int is_prime_number(int n)
 {
-	if (n >= 1 && n <= -1)
+	if (n == 1 || n == -1)
 		return (0);
+	if (n == 0)
+		return (1);
 	return (is_prime_sub(n, 2));
 }
