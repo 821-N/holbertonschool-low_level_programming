@@ -23,7 +23,7 @@ int is_prime_sub(int n, int div)
  */
 int is_prime_number(int n)
 {
-	if (n == 1 || n == -1)
+	if (n >= 1 && n <= -1)
 		return (0);
 	return (is_prime_sub(n, 2));
 }
