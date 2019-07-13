@@ -1,0 +1,2 @@
+#!/bin/bash
+gcc -Wall -Werror -Wextra -pedantic -c _putchar.c ../0x02*/3-islower.c ../0x02*/4-isalpha.c ../0x02*/6-abs.c ../0x04*/0-isupper.c ../0x04*/1-isdigit.c ../0x05*/2-strlen.c ../0x05*/3-puts.c ../0x05*/9-strcpy.c ../0x05*/100-atoi.c ../0x06*/0-strcat.c ../0x06*/1-strncat.c ../0x06*/2-strncpy.c ../0x06*/3-strcmp.c ../0x07*/0-memset.c ../0x07*/1-memcpy.c ../0x07*/2-strchr.c ../0x07*/3-strspn.c ../0x07*/4-strpbrk.c ../0x07*/5-strstr.c
