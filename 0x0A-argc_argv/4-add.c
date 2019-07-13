@@ -3,16 +3,16 @@
 
 /**
  * readnum - read positive integer from string
- * 
+ *
  * @s: string
  * Return: number, or -1 if string contained non-digits
  */
 int readnum(char *s)
 {
 	int num = 0;
-	
+
 	for (; *s; s++)
-		if(*s >= '0' && *s <= '9')
+		if (*s >= '0' && *s <= '9')
 			num = num * 10 + (*s - '0');
 		else
 			return (-1);
