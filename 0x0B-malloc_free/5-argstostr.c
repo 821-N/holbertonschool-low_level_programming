@@ -36,8 +36,8 @@ char *strcpy2(char *dest, char *source)
 /**
  * argstostr - concat args into a new string, each followed by \n
  *
- * @ac - argc (must be > 0)
- * @av - argv
+ * @ac: argc (must be > 0)
+ * @av: argv
  * Return: pointer to string, or NULL
  */
 char *argstostr(int ac, char **av)
