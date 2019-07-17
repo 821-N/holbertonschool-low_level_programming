@@ -39,6 +39,9 @@ char **strtow(char *str)
 	int words = 0, inword = 0;
 	char *temp = str, **ret;
 
+	if (!str || *str == '\0')
+		return (NULL);
+
 	for (; *temp; temp++)
 		if (inword)
 		{
