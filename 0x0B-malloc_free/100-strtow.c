@@ -43,15 +43,14 @@ char **strtow(char *str)
 		return (NULL);
 	for (; *temp; temp++)
 		if (inword)
-		{
-			if (*temp == ' ')
-				inword = 0;
-		}
+			inword = (*temp == ' ');
 		else if (*temp != ' ')
 		{
 			inword = 1;
 			words++;
 		}
+	if (words < 1)
+		return (NULL);
 	ret = malloc((words + 1) * sizeof(char *));
 	if (!ret)
 		return (NULL);
