@@ -9,7 +9,7 @@
 char *worddup(char *str)
 {
 	char *temp, *ret;
-	int length;
+	int length = 0;
 
 	/* check str */
 	if (!str)
