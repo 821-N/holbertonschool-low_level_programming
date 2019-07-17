@@ -41,7 +41,6 @@ char **strtow(char *str)
 
 	if (!str || *str == '\0')
 		return (NULL);
-
 	for (; *temp; temp++)
 		if (inword)
 		{
@@ -53,12 +52,10 @@ char **strtow(char *str)
 			inword = 1;
 			words++;
 		}
-
 	ret = malloc((words + 1) * sizeof(char *));
 	if (!ret)
 		return (NULL);
-
-	for (words = 0, temp = str; *temp; temp++)
+	for (words = inword = 0, temp = str; *temp; temp++)
 		if (inword)
 		{
 			if (*temp == ' ')
