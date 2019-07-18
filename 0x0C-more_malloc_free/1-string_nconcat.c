@@ -17,12 +17,29 @@ int strlen2(char *s)
 	return (length);
 }
 
+/**
+ * strncpy2 - copy n chars from src, to dest.
+ *
+ * @dest: destination
+ * @src: Source. can be NULL if @n is 0.
+ * @n: Number of chars to copy.
+ */
 void strncpy2(char *dest, char *src, unsigned int n)
 {
-	while(n-- > 0)
+
+	while (n-- > 0)
 		*dest++ = *src++;
 }
 
+/**
+ * string_nconcat - create a new string containing @s1 and
+ *  at most @n chars from @s2
+ *
+ * @s1: first string
+ * @s2: second string
+ * @n: number of chars from @s2
+ * Return: pointer to new string, or NULL
+ */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	int len1 = strlen2(s1), len2 = strlen2(s2);
@@ -37,6 +54,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	strncpy2(new, s1, len1);
 	strncpy2(new + len1, s2, len2);
-	new[len1+len2] = '\0';
+	new[len1 + len2] = '\0';
 	return (new);
 }
