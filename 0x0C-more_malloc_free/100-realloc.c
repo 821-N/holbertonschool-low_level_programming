@@ -10,15 +10,15 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *new, *newer;
+	char *new, *newer, *ptr2 = ptr;
 
-	if (ptr == NULL)
+	if (ptr2 == NULL)
 		return (malloc(new_size));
 
 	if (new_size == old_size)
-		return (ptr);
+		return (ptr2);
 
-	free(ptr);
+	free(ptr2);
 	/* allocate new array */
 	if (new_size == 0)
 		return (NULL);
@@ -29,7 +29,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (old_size < new_size)
 		old_size = new_size;
 	while (old_size-- > 0)
-		*newer++ = *(char *)ptr++;
+		*newer++ = *ptr2++;
 
 	return (new);
 }
