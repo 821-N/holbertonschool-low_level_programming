@@ -42,7 +42,7 @@ void strncpy2(char *dest, char *src, unsigned int n)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int len1 = strlen2(s1), len2 = strlen2(s2);
+	unsigned int len1 = strlen2(s1), len2 = strlen2(s2);
 	char *new;
 
 	if (n < len2)
