@@ -78,6 +78,8 @@ int main(int argc, char **argv)
 	/* skip leading zeroes and print */
 	for (i = 0; sum[i] == '0'; i++)
 		;
+	if (!sum[i])
+		i--;
 	puts(sum + i);
 	/* exit */
 	free(sum);
