@@ -24,7 +24,7 @@ char *_strdup(char *str)
 	/* copy */
 	do
 		new[length] = str[length];
-	while(length--);
+	while (length--);
 
 	return (new);
 }
@@ -41,16 +41,17 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog;
 
-	if(!name || !owner)
-		return (NULL);
-
 	dog = malloc(sizeof(dog_t));
 	if (!dog)
 		return (NULL);
 
 	dog->name = _strdup(name);
+	if (!dog->name)
+		return (NULL);
 	dog->age = age;
 	dog->owner = _strdup(owner);
+	if (!dog->owner)
+		return (NULL);
 
 	return (dog);
 }
