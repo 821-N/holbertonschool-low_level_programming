@@ -1,2 +1,2 @@
 /**
-*main-*/main(v) {puts(&v); }
+*w-w*/main(v) {puts(&v); }
