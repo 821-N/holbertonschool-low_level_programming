@@ -10,7 +10,7 @@
  */
 int (*get_op_func(char *s))(int, int)
 {
-	static op_t ops[] = { /* owo what's this */
+	op_t ops[] = { /* owo what's this */
 		{"+", op_add},
 		{"-", op_sub},
 		{"*", op_mul},
