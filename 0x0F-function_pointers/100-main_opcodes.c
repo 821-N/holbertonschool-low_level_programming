@@ -7,7 +7,7 @@
  *
  * @argc: argc
  * @argv: argv
- * Return: 0 (ok) 1 (some error)
+ * Return: 0 (ok) 1 (wrong args) 2 (number is negative)
  */
 int main(int argc, char **argv)
 {
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	if (num < 0)
 	{
 		printf("Error\n");
-		return (1);
+		return (2);
 	}
 
 	for (i = 0; i < num; i++)
