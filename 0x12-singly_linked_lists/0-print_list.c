@@ -27,6 +27,12 @@ void print_number(unsigned int n)
 		_putchar('0');
 }
 
+/**
+ * print_item - print string and length
+ *
+ * @s: string
+ * @len: length of s
+ */
 void print_item(char *s, unsigned int len)
 {
 	unsigned int i;
@@ -49,6 +55,12 @@ void print_item(char *s, unsigned int len)
 	_putchar('\n');
 }
 
+/**
+ * print_list - print a linked list
+ *
+ * @h: first item in list
+ * Return: number of items in list
+ */
 size_t print_list(const list_t *h)
 {
 	if (!h)
