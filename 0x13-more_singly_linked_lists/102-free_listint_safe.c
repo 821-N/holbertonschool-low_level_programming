@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * find_loop: find a loop in a linked list
+ * find_loop - find a loop in a linked list
  * @head: pointer to start of list
  * Return: a pointer to the last unique item, or NULL if no loop exists
  */
@@ -13,8 +13,7 @@ listint_t *find_loop(listint_t *head)
 	if (!head || !head->next) /* list has 0 or 1 items */
 		return (NULL);
 
-	do
-	{
+	do {
 		slow = slow->next;
 		fast = fast->next->next;
 		if (!fast || !fast->next)
@@ -47,7 +46,7 @@ size_t free_listint_safe(listint_t **h)
 		last->next = NULL;
 
 	last = *h;
-	while(last)
+	while (last)
 	{
 		next = last->next;
 		free(last);
