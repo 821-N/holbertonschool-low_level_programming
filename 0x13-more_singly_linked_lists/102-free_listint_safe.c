@@ -3,6 +3,8 @@
 
 /**
  * find_loop - find a loop in a linked list
+ *  Based on code from
+ *  http://geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list
  * @head: pointer to start of list
  * Return: a pointer to the last unique item, or NULL if no loop exists
  */
