@@ -42,7 +42,7 @@ int is_before(
 
 /**
  * print_listint_safe - print a linked list of integers. O(n^2)
- * @h: first item in list
+ * @head: first item in list
  * Return: number of items in list
  */
 size_t print_listint_safe(const listint_t *head)
