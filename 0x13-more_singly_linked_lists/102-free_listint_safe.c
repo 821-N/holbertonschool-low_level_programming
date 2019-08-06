@@ -15,6 +15,9 @@ listint_t *find_loop(listint_t *head)
 	if (!head || !head->next) /* list has 0 or 1 items */
 		return (NULL);
 
+	if (head->next->next == head)
+		return (head->next);
+
 	do {
 		slow = slow->next;
 		fast = fast->next->next;
@@ -37,6 +40,7 @@ listint_t *find_loop(listint_t *head)
  */
 size_t free_listint_safe(listint_t **h)
 {
+	printf("Start\n");
 	listint_t *last, *next;
 	size_t size = 0;
 
@@ -52,6 +56,7 @@ size_t free_listint_safe(listint_t **h)
 	{
 		next = last->next;
 		free(last);
+		printf("Freeing [%p]\n", (void *)last);
 		size += sizeof(listint_t);
 		last = next;
 	}

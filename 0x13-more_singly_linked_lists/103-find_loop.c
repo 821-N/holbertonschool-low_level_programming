@@ -14,6 +14,9 @@ listint_t *find_listint_loop(listint_t *head)
 	if (!head || !head->next) /* list has 0 or 1 items */
 		return (NULL);
 
+	if (head->next->next == head)
+		return (head->next);
+
 	do {
 		slow = slow->next;
 		fast = fast->next->next;
