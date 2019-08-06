@@ -15,9 +15,6 @@ listint_t *find_loop(listint_t *head)
 	if (!head || !head->next) /* list has 0 or 1 items */
 		return (NULL);
 
-	if (head->next->next == head)
-		return (head->next);
-
 	do {
 		slow = slow->next;
 		fast = fast->next->next;
@@ -25,11 +22,10 @@ listint_t *find_loop(listint_t *head)
 			return (NULL); /* found end of list */
 	} while (slow != fast);
 	/* found loop */
-	while (head->next != fast->next)
-	{
+	do {
 		head = head->next;
 		fast = fast->next;
-	}
+	} while (head->next != fast->next)
 	return (fast);
 }
 
