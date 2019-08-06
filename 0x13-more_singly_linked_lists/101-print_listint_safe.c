@@ -54,10 +54,10 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		if (prev && !is_before(head, prev, curr))
 		{
-			printf("-> [%p] %d\n", curr, curr->n);
+			printf("-> [%p] %d\n", (void *)curr, curr->n);
 			break;
 		}
-		printf("[%p] %d\n", curr, curr->n);
+		printf("[%p] %d\n", (void *)curr, curr->n);
 
 		prev = curr;
 		curr = curr->next;
