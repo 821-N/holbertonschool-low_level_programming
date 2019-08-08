@@ -19,5 +19,4 @@ void print_binary(unsigned long int n)
 		_putchar('0' + !!(n & y));
 		y >>= 1;
 	}
-	_putchar('\n');
 }
