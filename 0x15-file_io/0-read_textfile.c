@@ -29,8 +29,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		written = 0;
 		goto free;
 	}
-
 	written = read(fd, data, letters);
+	close(fd);
+
 	if (written < 0)
 	{
 		written = 0;
