@@ -31,7 +31,7 @@ void copy_file(int source_fd, char *sourcename, int dest_fd, char *destname)
 		{
 			close(source_fd);
 			close(dest_fd);
-			dprintf(STDERR_FILENO, "Error: can't write to %s\n", destname);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", destname);
 			exit(99);
 		}
 	}
@@ -69,13 +69,13 @@ int main(int argc, char **argv)
 	copy_file(source_fd, argv[1], dest_fd, argv[2]);
 	if (close(source_fd))
 	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", source_fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", source_fd);
 		close(dest_fd);
 		return (100);
 	}
 	if (close(dest_fd))
 	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", dest_fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_fd);
 		return (100);
 	}
 	return (0);
