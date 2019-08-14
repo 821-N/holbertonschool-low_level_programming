@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <elf.h>
 #include <stdlib.h>
+
+#ifndef EV_CURRENT
+#define EV_CURRENT 1
+#endif
 
 void get_header(char *filename, unsigned char *magic)
 {
