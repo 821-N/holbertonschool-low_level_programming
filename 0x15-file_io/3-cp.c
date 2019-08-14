@@ -24,7 +24,7 @@ void copy_file(int source_fd, char *sourcename, int dest_fd, char *destname)
 		{
 			close(source_fd);
 			close(dest_fd);
-			dprintf(STDERR_FILENO, "Error: can't read from file %s\n", sourcename);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", sourcename);
 			exit(98);
 		}
 		if (write(dest_fd, buffer, amount) < amount)
