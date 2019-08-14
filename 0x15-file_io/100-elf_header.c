@@ -84,9 +84,9 @@ int print_stuff(int endian, int version, int os, int abi)
 	char *os_names[] = {
 		"UNIX - System V", "UNIX - HP-UX", "UNIX - NetBSD", "UNIX - GNU"
 	};
+	int be = 0;
 
 	printf("  Data:                              ");
-	int be = 0;
 
 	if (endian == 0)
 		printf("none\n");
