@@ -7,6 +7,11 @@
 #define EV_CURRENT 1
 #endif
 
+/**
+ * get_header - open and get header of ELF file
+ * @filename: name of file to load
+ * @magic: array to store magic data
+ */
 void get_header(char *filename, unsigned char *magic)
 {
 	int fd = open(filename, O_RDONLY);
@@ -42,6 +47,10 @@ fail:
 	exit(98);
 }
 
+/**
+ * print_type - print ELF type
+ * @type: type
+ */
 void print_type(int type)
 {
 	printf("  Type:                              ");
@@ -62,11 +71,34 @@ void print_type(int type)
 	printf("\n");
 }
 
-void print_stuff(int version, int os, int abi)
+/**
+ * print_stuff - print endian, version, os, abi
+ * @endian: endian
+ * @version: version
+ * @os: os
+ * @abi: abi
+ * Return: 0 = LE, 1 = BE
+ */
+int print_stuff(int endian, int version, int os, int abi)
 {
 	char *os_names[] = {
 		"UNIX - System V", "UNIX - HP-UX", "UNIX - NetBSD", "UNIX - GNU"
 	};
+
+	printf("  Data:                              ");
+	int be = 0;
+
+	if (endian == 0)
+		printf("none\n");
+	else if (endian == 1)
+		printf("2's complement, little endian\n");
+	else if (endian == 2)
+	{
+		printf("2's complement, big endian\n");
+		be = 1;
+	}
+	else
+		printf("<unknown: %x>\n", endian);
 
 	printf("  Version:                           ");
 	if (version < EV_CURRENT)
@@ -87,8 +119,14 @@ void print_stuff(int version, int os, int abi)
 	/* ABI version */
 	printf("  ABI Version:                       ");
 	printf("%x\n", abi);
+	return (be);
 }
 
+/**
+ * print_class - get/print 32 or 64 bit option
+ * @class: class
+ * Return: number of chars in pointer
+ */
 int print_class(int class)
 {
 	printf("  Class:                             ");
@@ -104,23 +142,6 @@ int print_class(int class)
 	else
 		printf("<unknown: %x>\n", class);
 	return (4);
-}
-
-int print_endian(int endian)
-{
-	printf("  Data:                              ");
-	if (endian == 0)
-		printf("none\n");
-	else if (endian == 1)
-		printf("2's complement, little endian\n");
-	else if (endian == 2)
-	{
-		printf("2's complement, big endian\n");
-		return (1);
-	}
-	else
-		printf("<unknown: %x>\n", endian);
-	return (0);
 }
 
 /**
@@ -149,8 +170,7 @@ int main(int argc, char **argv)
 		printf("%02x ", magic[i]);
 	printf("\n");
 	epsize = print_class(magic[4]); /* Class (32 or 64 bit) */
-	be = print_endian(magic[5]); /* Data Endianness/format */
-	print_stuff(magic[6], magic[7], magic[8]);
+	be = print_stuff(magic[5], magic[6], magic[7], magic[8]);
 	/* Type */
 	if (be)
 		print_type(magic[0x11] | magic[0x10] << 8);
