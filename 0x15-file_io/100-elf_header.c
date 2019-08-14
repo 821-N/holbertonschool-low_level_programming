@@ -19,25 +19,25 @@ void get_header(char *filename, unsigned char *magic)
 
 	if (fd < 0)
 	{
-		dprintf(STDERR_FILENO, "Could not open file: %s\n", filename);
+		write(STDERR_FILENO, "Could not open file\n", 20);
 		exit(98);
 	}
 
 	length = read(fd, magic, 0x18 + 8);
 	if (length < 0)
 	{
-		dprintf(STDERR_FILENO, "Could not read from file\n");
+		write(STDERR_FILENO, "Could not read from file\n", 25);
 		goto fail;
 	}
 	if (length != 0x18 + 8)
 	{
-		dprintf(STDERR_FILENO, "File too short\n");
+		write(STDERR_FILENO, "File too short\n", 15);
 		goto fail;
 	}
 
 	if (magic[0] != 0x7F || magic[1] != 'E' || magic[2] != 'L' || magic[3] != 'F')
 	{
-		dprintf(STDERR_FILENO, "Not an ELF file\n");
+		write(STDERR_FILENO, "Not an ELF file\n", 16);
 		goto fail;
 	}
 	close(fd);
@@ -160,7 +160,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "Usage: %s filename\n", argv[0]);
+		write(STDERR_FILENO, "Usage: elf_header filename\n", 27);
 		return (98);
 	}
 	get_header(argv[1], magic);
