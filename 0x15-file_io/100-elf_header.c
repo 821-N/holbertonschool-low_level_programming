@@ -184,4 +184,5 @@ int main(int argc, char **argv)
 		for (i = epsize - 1; i >= 0; i--)
 			entry = entry << 8 | magic[0x18 + i];
 	printf("  Entry point address:               0x%lx\n", entry);
+	return (0);
 }
