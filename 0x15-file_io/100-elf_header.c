@@ -167,7 +167,11 @@ int main(int argc, char **argv)
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
 	for (i = 0; i < 16; i++)
-		printf("%02x ", magic[i]);
+	{
+		if (i)
+			printf(" ");
+		printf("%02x", magic[i]);
+	}
 	printf("\n");
 	epsize = print_class(magic[4]); /* Class (32 or 64 bit) */
 	be = print_stuff(magic[5], magic[6], magic[7], magic[8]);
