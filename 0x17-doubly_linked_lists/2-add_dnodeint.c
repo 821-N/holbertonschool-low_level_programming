@@ -18,9 +18,13 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	new->prev = NULL;
 	new->next = *head;
 	new->n = n;
-	if (*head) /* ooh it lines up! if you have 3 space indent.. */
-		(*head)->prev = new;
-	else
+	if (!*head) /* if list is empty */
 		*head = new;
+	else /* not empty */
+	{
+		if ((*head)->prev) /* not actually at start of list! */
+			(*head)->prev->next = new;
+		(*head)->prev = new;
+	}
 	return (new);
 }
