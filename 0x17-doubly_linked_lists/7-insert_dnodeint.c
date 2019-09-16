@@ -18,7 +18,8 @@ dlistint_t *add_dnodeint_after(dlistint_t *h, int n)
 	new->n = n;
 	new->next = h->next;
 	new->prev = h;
-	h->next->prev = new;
+	if (h->next)
+		h->next->prev = new;
 	h->next = new;
 	return (new);
 }
