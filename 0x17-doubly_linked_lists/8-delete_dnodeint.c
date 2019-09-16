@@ -15,7 +15,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		return (-1);
 	/* find node */
 	curr = *head;
-	while (--index)
+	while (index--)
 		if (curr)
 			curr = curr->next;
 		else
