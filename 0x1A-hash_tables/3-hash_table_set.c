@@ -49,7 +49,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	hash_node_t *find;
-	char *value2;
+	char *value2, *key2;
 
 	/* check if any of the inputs are NULL, or key is an empty string */
 	if (!ht || !key || !value || key[0] == '\0')
@@ -61,12 +61,22 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	index = key_index((const unsigned char *)key, ht->size);
 	find = bucket_find(ht->array[index], (char *)key);
 	if (find)
+	{
+		free(find->value);
 		find->value = value2;
+	}
 	else
 	{
-		find = bucket_add(&(ht->array[index]), (char *)key, value2);
+		key2 = strdup(key);
+		if (!key2)
+		{
+			free(value2);
+			return (0);
+		}
+		find = bucket_add(&(ht->array[index]), key2, value2);
 		if (find == NULL)
 		{
+			free(key2);
 			free(value2);
 			return (0);
 		}
