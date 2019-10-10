@@ -7,7 +7,7 @@
  * @value: value string
  * Return: pointer to new node, or NULL if allocation failed
  */
-hash_node_t *bucket_add(hash_node_t **head, char *key, char *value)
+static hash_node_t *bucket_add(hash_node_t **head, char *key, char *value)
 {
 	hash_node_t *new = malloc(sizeof(*new));
 
@@ -16,8 +16,8 @@ hash_node_t *bucket_add(hash_node_t **head, char *key, char *value)
 	new->key = key;
 	new->value = value;
 	new->next = *head;
-	if (*head == NULL)
-		*head = new;
+	*head = new;
+
 	return (new);
 }
 
@@ -28,7 +28,7 @@ hash_node_t *bucket_add(hash_node_t **head, char *key, char *value)
  * @key: key string
  * Return: pointer to node, or NULL if not found
  */
-hash_node_t *bucket_find(hash_node_t *bucket, char *key)
+static hash_node_t *bucket_find(hash_node_t *bucket, char *key)
 {
 	while (bucket)
 		if (strcmp(bucket->key, key))
@@ -58,7 +58,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!value2)
 		return (0);
 
-	index = key_index(key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
 	find = bucket_find(ht->array[index], (char *)key);
 	if (find)
 		find->value = value2;
