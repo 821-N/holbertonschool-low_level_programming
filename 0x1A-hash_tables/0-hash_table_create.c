@@ -10,7 +10,10 @@ hash_table_t *hash_table_create(unsigned long int size)
 	hash_table_t *new;
 	size_t i;
 
+
 	/* Allocate */
+	if (size <= 0)
+		return (NULL);
 	new = malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
