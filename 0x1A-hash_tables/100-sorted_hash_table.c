@@ -54,7 +54,10 @@ static shash_node_t *bucket_search(shash_node_t *bucket, const char *key)
  * @stail: address of tail ptr
  * @item: item to insert
  */
-static void sorted_insert(shash_node_t **shead, shash_node_t **stail, shash_node_t *item)
+static void sorted_insert(
+	shash_node_t **shead, shash_node_t **stail,
+	shash_node_t *item
+	)
 {
 	shash_node_t *curr;
 
