@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <string.h>
 #include <stdio.h>
 
 /**
@@ -39,10 +38,10 @@ void counting_sort(int *array, size_t size)
 			max = array[i];
 
 	counts = malloc(max + 1);
-
 	if (!counts)
 		return;
-	memset(counts, 0, (max + 1) * sizeof(size_t));
+	for (i = 0; i <= max; i++)
+		counts[i] = 0;
 
 	for (i = 0; i < size; i++)
 		counts[array[i]]++;
