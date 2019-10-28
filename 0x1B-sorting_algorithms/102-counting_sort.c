@@ -29,7 +29,8 @@ static void print_totals(size_t *counts, int len)
  */
 void counting_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t i;
+	ssize_t k;
 	int max = array[0];
 	size_t *counts;
 
@@ -40,16 +41,16 @@ void counting_sort(int *array, size_t size)
 	counts = malloc(max + 1);
 	if (!counts)
 		return;
-	for (i = 0; i <= max; i++)
-		counts[i] = 0;
+	for (k = 0; k <= max; k++)
+		counts[k] = 0;
 
 	for (i = 0; i < size; i++)
 		counts[array[i]]++;
 	print_totals(counts, max + 1);
 
-	for (i = 0; i <= max; i++)
-		for (j = 0; j < counts[i]; j++)
-			*array++ = i;
+	for (k = 0; k <= max; k++)
+		for (i = 0; i < counts[k]; i++)
+			*array++ = k;
 
 	free(counts);
 }
