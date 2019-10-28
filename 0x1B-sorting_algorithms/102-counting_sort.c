@@ -2,24 +2,21 @@
 #include <stdio.h>
 
 /**
- * print_totals - print running totals of list
+ * totals - calculate running totals of list
  * @counts: list
  * @len: length of counts
  * yes these arg types are correct lol
  */
-static void print_totals(size_t *counts, int len)
+static void totals(int *counts, int len)
 {
 	int i;
-	size_t total = 0;
+	int total = 0;
 
 	for (i = 0; i < len; i++)
 	{
 		total += counts[i];
-		if (i)
-			printf(", ");
-		printf("%ld", total);
+		counts[i] = total;
 	}
-	printf("\n");
 }
 
 /**
@@ -30,9 +27,9 @@ static void print_totals(size_t *counts, int len)
 void counting_sort(int *array, size_t size)
 {
 	size_t i;
-	int k;
+	int k, j;
 	int max = array[0];
-	size_t *counts;
+	int *counts;
 
 	for (i = 1; i < size; i++)
 		if (array[i] > max)
@@ -46,11 +43,13 @@ void counting_sort(int *array, size_t size)
 
 	for (i = 0; i < size; i++)
 		counts[array[i]]++;
-	print_totals(counts, max + 1);
 
 	for (k = 0; k <= max; k++)
-		for (i = 0; i < counts[k]; i++)
+		for (j = 0; j < counts[k]; j++)
 			*array++ = k;
+
+	totals(counts, max + 1);
+	print_array(counts, max + 1);
 
 	free(counts);
 }
