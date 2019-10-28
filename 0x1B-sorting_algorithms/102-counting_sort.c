@@ -30,7 +30,7 @@ static void print_totals(size_t *counts, int len)
 void counting_sort(int *array, size_t size)
 {
 	size_t i;
-	ssize_t k;
+	int k;
 	int max = array[0];
 	size_t *counts;
 
