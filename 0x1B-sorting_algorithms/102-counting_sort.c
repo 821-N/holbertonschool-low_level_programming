@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdlib.h>
 
 /**
  * totals - calculate running totals of list
