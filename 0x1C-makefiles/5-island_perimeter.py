@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/user/bin/python3
 
 
 def island_perimeter(grid):
@@ -73,6 +73,6 @@ def island_perimeter(grid):
         first = False
         pos = adddir(pos, dir)
         # debug(grid, dir, pos)
-        input()
+        # input()
 
     return perimeter
