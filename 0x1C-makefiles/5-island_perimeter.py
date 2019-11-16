@@ -1,4 +1,4 @@
-#!/user/bin/python3
+#!/usr/bin/python3
 
 
 def island_perimeter(grid):
@@ -23,7 +23,7 @@ def island_perimeter(grid):
 
     def adddir(pos, dir):
         return (pos[0]+dir[0], pos[1]+dir[1])
-    
+
     def check(grid, pos):
         """Check if tile is land"""
         return (
@@ -36,25 +36,26 @@ def island_perimeter(grid):
     dir = (1, 0)
     startdir = dir
     first = True
+
     def turn(grid, pos, dir):
         nonlocal perimeter
-        dir = cw(dir) # try turning left
+        dir = cw(dir)  # try turning left
         for i in range(4):
             if dir == startdir and pos == start and not first:
                 perimeter -= 1
                 return None
 
-            if check(grid, adddir(pos, dir)): # find place to move to
+            if check(grid, adddir(pos, dir)):  # find place to move to
                 return dir
-            perimeter += 1 # add 1 to perimeter for each wall that is hit
-            dir = ccw(dir) # turn right
+            perimeter += 1  # add 1 to perimeter for each wall that is hit
+            dir = ccw(dir)  # turn right
         return None
 
     def debug(grid, dir, pos):
         for y in range(len(grid)):
             row = grid[y]
             for x in range(len(row)):
-                if (x,y) == pos:
+                if (x, y) == pos:
                     print(end="*")
                 elif row[x]:
                     print(end="#")
@@ -62,7 +63,7 @@ def island_perimeter(grid):
                     print(end="~")
             print()
         print(dir)
-    
+
     # Edge following
     pos = start
     while 1:
@@ -71,17 +72,7 @@ def island_perimeter(grid):
             break
         first = False
         pos = adddir(pos, dir)
-        #debug(grid, dir, pos)
+        # debug(grid, dir, pos)
         input()
 
     return perimeter
-
-#
-#grid = [
-#    [0, 0, 0, 0, 0, 0],
-#    [0, 1, 1, 0, 0, 0],
-#    [0, 0, 0, 0, 0, 0],
-#    [0, 0, 0, 0, 0, 0],
-#    [0, 0, 0, 0, 0, 0]
-#]
-#print(island_perimeter(grid))
