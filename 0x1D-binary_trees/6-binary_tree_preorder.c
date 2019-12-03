@@ -2,7 +2,8 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_preorder - call a function on each node of a binary tree using pre-order traversal
+ * binary_tree_preorder - call a function on each node of a binary tree using
+ *  pre-order traversal
  *  depth first search basically
  * @tree: root of tree
  * @func: function to call
