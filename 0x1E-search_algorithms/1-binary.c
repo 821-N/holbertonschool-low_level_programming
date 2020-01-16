@@ -29,10 +29,13 @@ void print_region(int *array, size_t start, size_t end)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t low = 0, high = size - 1, mid;
+	size_t low = 0, high, mid;
 
-	while (low <= high)
-	{
+	if (!size)
+		return (-1);
+
+	high = size - 1;
+	do { /* <3 */
 		print_region(array, low, high);
 		mid = (low + high) / 2;
 		if (array[mid] < value)
@@ -41,6 +44,6 @@ int binary_search(int *array, size_t size, int value)
 			high = mid - 1;
 		else
 			return (mid);
-	}
+	} while (low <= high);
 	return (-1);
 }
